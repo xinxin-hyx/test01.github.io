@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物种展示 - 弹窗功能</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="content">
+            <h1>物种展示</h1>
+            <p>点击卡片查看详细信息，包括图片和生物列表</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="species-grid">
+            <div class="species-card" onclick="openModal('images/01.jpg', '神秘的森林守护者', '哺乳动物', [
+                {name: '东北虎', category: '哺乳动物', habitat: '森林', status: '濒危'},
+                {name: '大熊猫', category: '哺乳动物', habitat: '竹林', status: '易危'},
+                {name: '金丝猴', category: '哺乳动物', habitat: '森林', status: '濒危'}
+            ])">
+                <div class="species-image">
+                    <img src="images/01.jpg" alt="神秘的森林守护者">
+                </div>
+                <div class="species-content">
+                    <h2>神秘的森林守护者</h2>
+                    <p>这些生物在森林生态系统中扮演着重要的角色，它们是大自然的守护者，维持着生态平衡。</p>
+                    <div class="species-info">
+                        <span class="species-category">哺乳动物</span>
+                        <span class="view-details">查看详情</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="species-card" onclick="openModal('images/02.jpg', '海洋的精灵', '海洋生物', [
+                {name: '蓝鲸', category: '海洋生物', habitat: '海洋', status: '濒危'},
+                {name: '海豚', category: '海洋生物', habitat: '海洋', status: '无危'},
+                {name: '海龟', category: '海洋生物', habitat: '海洋', status: '易危'}
+            ])">
+                <div class="species-image">
+                    <img src="images/02.jpg" alt="海洋的精灵">
+                </div>
+                <div class="species-content">
+                    <h2>海洋的精灵</h2>
+                    <p>生活在海洋中的这些生物是海洋生态系统的重要组成部分，它们有着独特的适应能力。</p>
+                    <div class="species-info">
+                        <span class="species-category">海洋生物</span>
+                        <span class="view-details">查看详情</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="species-card" onclick="openModal('images/03.jpg', '天空的使者', '鸟类', [
+                {name: '金雕', category: '鸟类', habitat: '山区', status: '无危'},
+                {name: '朱鹮', category: '鸟类', habitat: '湿地', status: '濒危'},
+                {name: '丹顶鹤', category: '鸟类', habitat: '湿地', status: '濒危'}
+            ])">
+                <div class="species-image">
+                    <img src="images/03.jpg" alt="天空的使者">
+                </div>
+                <div class="species-content">
+                    <h2>天空的使者</h2>
+                    <p>这些翱翔在天空中的生物是自由的象征，它们有着出色的飞行能力，能够在广阔的天空中自由穿梭。</p>
+                    <div class="species-info">
+                        <span class="species-category">鸟类</span>
+                        <span class="view-details">查看详情</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 弹窗 -->
+    <div id="speciesModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <p id="modalCategory"></p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="">
+                    <div class="image-controls">
+                        <button class="image-control-btn" onclick="zoomImage(-0.1)">-</button>
+                        <button class="image-control-btn" onclick="resetImage()"> reset </button>
+                        <button class="image-control-btn" onclick="zoomImage(0.1)">+</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="filter-container">
+                        <input type="text" id="filterInput" class="filter-input" placeholder="搜索生物...">
+                    </div>
+                    <div class="table-container">
+                        <table id="speciesTable">
+                            <thead>
+                                <tr>
+                                    <th onclick="sortTable(0)">名称</th>
+                                    <th onclick="sortTable(1)">分类</th>
+                                    <th onclick="sortTable(2)">栖息地</th>
+                                    <th onclick="sortTable(3)">保护状态</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 物种展示 | 探索生命的奇迹</p>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
